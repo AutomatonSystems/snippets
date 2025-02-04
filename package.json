@@ -1,6 +1,6 @@
 {
   "name": "@automaton.systems/snippets",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A set of unrelated frequently useful typescript esm code snippets",
   "main": "index.ts",
   "type": "module",
