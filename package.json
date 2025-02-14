@@ -1,22 +1,22 @@
 {
-  "name": "@automaton.systems/snippets",
-  "version": "0.2.2",
-  "description": "A set of unrelated frequently useful typescript esm code snippets",
-  "main": "index.ts",
-  "type": "module",
-  "scripts": {
-    "demo": "tsx --expose-gc demo",
-    "fork": "tsx fork",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^22.10.1",
-    "tsx": "^4.19.2"
-  },
-  "dependencies": {
-    "p-queue": "^8.0.1",
-    "uuid": "^11.0.3"
-  }
+	"name": "@automaton.systems/snippets",
+	"version": "0.2.2",
+	"description": "A set of unrelated frequently useful typescript esm code snippets",
+	"main": "index.ts",
+	"type": "module",
+	"scripts": {
+		"demo": "tsx --expose-gc demo",
+		"fork": "tsx fork",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^22.13.1",
+		"tsx": "^4.19.2"
+	},
+	"dependencies": {
+		"p-queue": "^8.0.1",
+		"uuid": "^11.0.3"
+	}
 }

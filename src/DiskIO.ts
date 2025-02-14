@@ -1,5 +1,5 @@
 
-import { access, constants, mkdir, writeFile} from 'node:fs/promises';
+import { access, constants, mkdir, readdir, writeFile} from 'node:fs/promises';
 import { Readable } from 'node:stream';
 import PQueue from "p-queue";
 
@@ -36,4 +36,40 @@ export async function createFile(path: string, buffer: string | Uint8Array | Rea
 			await writeFile(path, buffer);
 		}
 	});
+}
+
+export async function* getFiles(dir: string, recursive=false, afterFolder?: (path: string)=>Promise<void>): AsyncGenerator<string> {
+	const dirents = await readdir(dir, { withFileTypes: true });
+	for (const dirent of dirents) {
+		const fullPath = dir + "/" + dirent.name;
+		if (dirent.isDirectory()) {
+			if(recursive){
+				yield* getFiles(fullPath, recursive, afterFolder);
+				if(afterFolder){
+					afterFolder(fullPath);
+				}
+			}
+		} else if (dirent.isSymbolicLink()) {
+			// ???
+		} else{
+			yield fullPath;
+		}
+	}
+}
+
+export async function* getFolders(dir: string, recursive=false): AsyncGenerator<string> {
+	const dirents = await readdir(dir, { withFileTypes: true });
+	for (const dirent of dirents) {
+		const fullPath = dir + "/" + dirent.name;
+		if (dirent.isDirectory()) {
+			yield fullPath;
+			if(recursive){
+				yield* getFolders(fullPath, recursive);
+			}
+		} else if (dirent.isSymbolicLink()) {
+			// ???
+		} else{
+			// noop
+		}
+	}
 }

@@ -6,3 +6,5 @@ export { ProgressBar } from "./src/CLI.ts";
 
 export { Serialization } from "./src/state/Serialize.ts";
 export { Deserialization, Deserialize, DeserializationLibrary } from "./src/state/Deserialize.ts";
+
+export * as DataUtils from "./src/data/Utils.ts";
