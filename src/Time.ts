@@ -2,6 +2,10 @@ export function niceDateString(date: Date = new Date()){
 	return date.toISOString().substring(0, 19).replace("T", " ");
 }
 
+export function niceDatetimeString(date: Date = new Date()){
+	return date.toISOString().substring(0, 19).replace("T", " ");
+}
+
 export async function sleep(duration: number, rep?: any){
 	await new Promise(res=>setTimeout(rep!==undefined?()=>res(rep):res, duration));
 }
