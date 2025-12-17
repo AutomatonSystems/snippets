@@ -1,3 +1,4 @@
+import { Nullable } from "../Types";
 
 /**
  * 
@@ -43,4 +44,42 @@ export function shuffle<T>(array: T[]): T[] {
 	}
 
 	return array;
+}
+
+export function random<T>(array: T[]){
+	return array[Math.floor(array.length * Math.random())];
+}
+
+export function max<T>(array: T[], func: (t:T)=>number, min: number = -Infinity): T|null{
+	let best = min;
+	let value: Nullable<T> = null;
+	for(let t of array){
+		let score = func(t);
+		if(score > best){
+			best = score;
+			value = t;
+		}
+	}
+	return value;
+}
+
+export function min<T>(array: T[], func: (t:T)=>number, max: number = Infinity): T|null{
+	let best = max;
+	let value: Nullable<T> = null;
+	for(let t of array){
+		let score = func(t);
+		if(score < best){
+			best = score;
+			value = t;
+		}
+	}
+	return value;
+}
+
+export function sum<T>(array: T[], func: (t:T)=>number): number{
+	let value = 0;
+	for(let t of array){
+		value += func(t);
+	}
+	return value;
 }

@@ -5,8 +5,8 @@
 	"main": "index.ts",
 	"type": "module",
 	"scripts": {
-		"demo": "tsx --expose-gc demo",
-		"fork": "tsx fork",
+		"demo": "tsx --expose-gc samples/demo.ts",
+		"fork": "tsx samples/ThreadQueue.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
@@ -16,7 +16,6 @@
 		"tsx": "^4.19.2"
 	},
 	"dependencies": {
-		"p-queue": "^8.0.1",
-		"uuid": "^11.0.3"
+		"p-queue": "^8.0.1"
 	}
 }

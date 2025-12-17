@@ -1,4 +1,4 @@
-import { readFile, open } from "fs/promises";
+import { readFile, open } from "node:fs/promises";
 import { createFile, hasFile } from "../DiskIO.ts";
 
 export class BitArray{
@@ -65,6 +65,6 @@ export class BitArray{
 	static async load(path: string){
 		let buffer = await readFile(path);
 		let size = (new DataView(buffer.buffer)).getUint32(0, true);
-		return new BitArray(buffer, size);
+		return new BitArray(<ArrayBuffer><unknown>buffer, size);
 	}
 }

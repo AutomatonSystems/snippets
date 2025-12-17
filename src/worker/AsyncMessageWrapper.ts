@@ -1,5 +1,5 @@
 import {ChildProcess} from "node:child_process";
-import Process from "process";
+import Process from "node:process";
 
 export type AsyncWorkerPort = {
 	async: (msg: any, transferable?: any[])=>Promise<any>;
@@ -30,12 +30,14 @@ export function CreateAsyncMessagePort(port: MessagePort|ChildProcess): AsyncWor
 		port.addEventListener("message", listen);
 	}
 
-	let send = port instanceof ChildProcess? (data: any)=>port.send(data) : port.postMessage;
+	console.log(port instanceof ChildProcess?"CHILD_PROCESS":"WEB_WORKER");
+
+	let send = port instanceof ChildProcess? (data: any)=>port.send(data) : port.postMessage.bind(port);
 
 	return {
 		postMessage: (msg: any, transferables?: Transferable[])=>{
 			try{
-				console.log(port, msg);
+				console.log("POST", port, msg, send);
 				send(msg, transferables ?? []);
 			}catch(e){
 				console.error(e);

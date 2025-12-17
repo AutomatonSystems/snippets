@@ -1,5 +1,5 @@
-import { ThreadedQueue } from './src/processing/ThreadedQueue.ts';
-import { sleep } from './src/Time.ts';
+import { ThreadedQueue } from '../src/processing/ThreadedQueue.ts';
+import { sleep } from '../src/utils/Time.ts';
 
 let loadData = async ()=>{
 	console.log("LOADED DATA");

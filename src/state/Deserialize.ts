@@ -1,5 +1,5 @@
 import { IndexRecord, NEGATIVE_INFINITY, POSITIVE_INFINITY, SerializationHeader, WEAKREF_PREFIX, KNOWN_SERIALIZATION_CLASSES, NAN, Serializable} from "./Serialize.js";
-import { sleep } from "../Time.js";
+import { sleep } from "../utils/Time.js";
 
 
 
@@ -156,9 +156,9 @@ export class Deserialization{
 		let root = JSON.parse(Decoder.decode(readTail(header.root, true)));
 		let weak = JSON.parse(Decoder.decode(readTail(header.weak, true)));
 
-		this.binaryFunc = (bid: string)=>{
+		this.binaryFunc = ((bid: string)=>{
 			return readTail(header[bid], false);
-		};
+		}) as any;
 
 		// restore the root item
 		this.restoreItem(this, 'root', root);

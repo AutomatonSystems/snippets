@@ -1,9 +1,12 @@
-import { ProgressBar } from "./src/CLI.ts";
-import { TermColor } from "./src/cli/Colour.ts";
-import { BitArray } from "./src/data/BitArray.ts";
-import { ConcurrentQueue } from "./src/processing/ConcurrentQueue.ts";
-import { sleep } from "./src/Time.ts";
+import { ProgressBar } from "../src/cli/CLI.ts";
+import { TermColor, TermText } from "../src/cli/Colour.ts";
+import { BitArray } from "../src/data/BitArray.ts";
+import { ConcurrentQueue } from "../src/processing/ConcurrentQueue.ts";
+import { sleep } from "../src/utils/Time.ts";
 import fs from "node:fs";
+
+
+console.log(TermText.bgRgb(200,50,200).rgb(255,255,255).underline(" Hello ! "));
 
 const PATH = "./test.bin";
 
@@ -26,7 +29,7 @@ await bits.save(PATH);
 let bits2 = await BitArray.load(PATH);
 fs.rmSync(PATH);
 
-console.log("HELLO", bits.length, bits2.length);
+console.log("BITS READ: ", bits.length, bits2.length);
 
 console.log("\n\n");
 

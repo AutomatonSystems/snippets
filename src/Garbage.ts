@@ -1,4 +1,4 @@
-import {v4 as UUID} from "uuid"; 
+import { randomUUID as UUID } from "node:crypto";
 import { IFunc } from "./Types.ts";
 
 const CALLBACKS = new Map<string, ()=>void>();

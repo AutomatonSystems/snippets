@@ -1,11 +1,10 @@
 import PQueue from "p-queue";
 
+import { readFile } from "node:fs/promises";
 import * as DiskIO from "../DiskIO.js";
-import { readFile } from "fs/promises";
-import { keyInput, ProgressBar, TerminalSpinner } from "../CLI.js";
-import { TermColor, TermText } from "../cli/Colour.js";
+import { keyInput, ProgressBar, TerminalSpinner } from "../cli/CLI.js";
+import { TermColor, TextTransforms } from "../cli/Colour.js";
 import { ensureCalled } from "../Garbage.js";
-
 
 type QueueStats = {
 	size: number
@@ -145,7 +144,7 @@ function createLogger(queue: PQueue, stats: QueueStats): {stop: ()=>void, log:()
 	let logger = setInterval(log, BAR_LOG_INTERVAL_SECONDS * 1_000);
 	let fastlogger = setInterval(()=>{
 		process.stdout.write("  "+
-			TermText.render(SPINNER.render(), 
+			TextTransforms.render(SPINNER.render(), 
 				queue.size > 0 ? TermColor.BLUE : 
 				queue.pending == queue.concurrency ? TermColor.YELLOW :
 				TermColor.RED)

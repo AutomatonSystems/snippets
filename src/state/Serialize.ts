@@ -187,7 +187,7 @@ export async function serializePlainObject(obj: any, serialisation: Serializatio
 async function serializeObject(obj: any, serialisation: Serialization){
 	// if array buffer
 	if(obj instanceof ArrayBuffer || obj instanceof SharedArrayBuffer){
-		return serialisation.addBin(obj);
+		return serialisation.addBin(<ArrayBuffer><unknown>obj);
 	}
 	
 	if(Array.isArray(obj)){

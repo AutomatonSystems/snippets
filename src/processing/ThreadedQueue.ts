@@ -1,7 +1,7 @@
 import cluster from 'node:cluster';
 import process from 'node:process';
-import { sleep } from '../Time.ts';
-import { ProgressBar } from '../CLI.ts';
+import { sleep } from '../utils/Time.ts';
+import { ProgressBar } from '../cli/CLI.ts';
 import PQueue from 'p-queue';
 import { BitArray } from '../data/BitArray.ts';
 import { hasFile } from '../DiskIO.ts';

@@ -1,7 +1,7 @@
-import { TermText, TermColor } from "./cli/Colour.ts";
-import { ensureCalled } from "./Garbage.ts";
-import { IStoppable } from "./Types.ts";
-import { ms } from "./Time.ts";
+import { TextTransforms, TermColor } from "./Colour.ts";
+import { ensureCalled } from "../Garbage.ts";
+import { IStoppable } from "../Types.ts";
+import { ms } from "../utils/Time.ts";
 
 export function keyInput(callback: (char: string, stop: ()=>void)=>void): IStoppable{
 	console.log("KEY INPUT STARTED");
@@ -100,20 +100,20 @@ export class ProgressBar{
 		
 		// complete
 		let chunks = Math.floor(value / parts); // so this many solid chars
-		bar += TermText.render("".padStart(chunks, this.style.BAR[0]), this.color);
+		bar += TextTransforms.render("".padStart(chunks, this.style.BAR[0]), this.color);
 		
 		// partially complete
 		let partial = Math.floor(SUB_CHAR_DIVISIONS * (value / parts - chunks)); // and a partial
 		if(partial > 0){
-			bar += TermText.render(this.style.BAR.charAt(partial), this.color);
+			bar += TextTransforms.render(this.style.BAR.charAt(partial), this.color);
 			chunks += 1;
 		}
 		
 		// incomplete
-		bar += TermText.render("".padEnd(width - chunks, this.style.BACK[1]), this.backcolor);
+		bar += TextTransforms.render("".padEnd(width - chunks, this.style.BACK[1]), this.backcolor);
 	
 		// wrap
-		bar = TermText.render(this.style.BACK[0], this.backcolor) + bar + TermText.render(this.style.BACK[2], this.backcolor);
+		bar = TextTransforms.render(this.style.BACK[0], this.backcolor) + bar + TextTransforms.render(this.style.BACK[2], this.backcolor);
 
 		
 		// item stats
@@ -138,13 +138,13 @@ export class ProgressBar{
 
 		let avgItemsPerSecond = this.itemsPerSecond.reduce((t,v)=>t+v, 0) / this.itemsPerSecond.length;
 		let totalText = total.toLocaleString();
-		let ipstext = TermText.green(`@ ${(recentAvg).toLocaleString(<any>{}, {maximumFractionDigits: 1})}/s`);
+		let ipstext = TextTransforms.green(`@ ${(recentAvg).toLocaleString(<any>{}, {maximumFractionDigits: 1})}/s`);
 
 		let percent = (100 * value / total).toFixed(1);
 		
 		let eta = avgItemsPerSecond > 0 ? ms(1000*((total - value) / avgItemsPerSecond), 2): "...";
 
-		let text = ` ${bar} ${TermText.bold(`${percent.padStart(5)}%`)} ${value.toLocaleString().padStart(totalText.length)} / ${totalText} ${ipstext}  ${eta}      `;
+		let text = ` ${bar} ${TextTransforms.bold(`${percent.padStart(5)}%`)} ${value.toLocaleString().padStart(totalText.length)} / ${totalText} ${ipstext}  ${eta}      `;
 		return text;
 	}
 }
