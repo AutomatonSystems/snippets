@@ -63,6 +63,19 @@ export function max<T>(array: T[], func: (t:T)=>number, min: number = -Infinity)
 	return value;
 }
 
+export function maxV<T>(array: T[], func: (t:T)=>number, min: number = -Infinity): number{
+	let best = min;
+	let value: Nullable<T> = null;
+	for(let t of array){
+		let score = func(t);
+		if(score > best){
+			best = score;
+			value = t;
+		}
+	}
+	return best;
+}
+
 export function min<T>(array: T[], func: (t:T)=>number, max: number = Infinity): T|null{
 	let best = max;
 	let value: Nullable<T> = null;
@@ -76,10 +89,46 @@ export function min<T>(array: T[], func: (t:T)=>number, max: number = Infinity):
 	return value;
 }
 
+export function minV<T>(array: T[], func: (t:T)=>number, max: number = Infinity): number{
+	let best = max;
+	let value: Nullable<T> = null;
+	for(let t of array){
+		let score = func(t);
+		if(score < best){
+			best = score;
+			value = t;
+		}
+	}
+	return best;
+}
+
+
+export function min2<T>(array: T[], func: (t:T)=>number, max: number = Infinity): [T|null, number]{
+	let best = max;
+	let value: Nullable<T> = null;
+	for(let t of array){
+		let score = func(t);
+		if(score < best){
+			best = score;
+			value = t;
+		}
+	}
+	return [value, best];
+}
+
 export function sum<T>(array: T[], func: (t:T)=>number): number{
 	let value = 0;
 	for(let t of array){
 		value += func(t);
 	}
 	return value;
+}
+
+export function equal<T>(a: T[], b: T[]){
+	if(a.length != b.length)
+		return false;
+	for(let i = 0; i < a.length; i++)
+		if(a[i] !== b[i])
+			return false;
+	return true;
 }

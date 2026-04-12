@@ -159,25 +159,31 @@ export class Serialization{
 }
 
 export let KNOWN_SERIALIZATION_CLASSES : Set<string> = new Set();
+const ALREADY_ERRORED_SERIALIZATION_CLASSES : Set<string> = new Set();
 
 export async function serializePlainObject(obj: any, serialisation: Serialization){
 	let type = obj.constructor.name;
 	// just explode the object to it's keys
 	let d: any = {};
+	console.log("hey");
 	if(type != 'Object'){
-		d['__class'] = obj.constructor.name;
-		if(!KNOWN_SERIALIZATION_CLASSES.has(obj.constructor.name)){
-			console.error(`Unregistered serialization class ${obj.constructor.name}`);
+		let cname = obj.constructor.name;
+		d['__class'] = cname;
+		if(!KNOWN_SERIALIZATION_CLASSES.has(cname) && !ALREADY_ERRORED_SERIALIZATION_CLASSES.has(cname)){
+			console.warn(`Unregistered serialization class ${cname}`);
+			ALREADY_ERRORED_SERIALIZATION_CLASSES.add(cname);
 		}
 	}
 	for(let key of Object.keys(obj)){
 		if(!key.startsWith('__')){
+			console.log(key);
 			let value = await serialize(obj[key], serialisation);
 			if(value !== null){
 				d[key] = value;
 			}
 		}
 	}
+	console.log("RETURN");
 	return d;
 }
 
