@@ -1,23 +1,23 @@
-export * from "./src/Types.ts";
+export * from "./src/Types.js";
 
-export { sleep } from "./src/utils/Time.ts";
-export { TermText, TextTransforms, TermColor } from "./src/cli/Colour.ts";
-export { ThreadedQueue } from "./src/processing/ThreadedQueue.ts";
-export { ConcurrentQueue } from "./src/processing/ConcurrentQueue.ts";
-export { ProgressBar } from "./src/cli/CLI.ts";
+export { sleep, ms } from "./src/utils/Time.js";
+export { TermText, TextTransforms, TermColor } from "./src/cli/Colour.js";
+export { ThreadedQueue } from "./src/processing/ThreadedQueue.js";
+export { ConcurrentQueue } from "./src/processing/ConcurrentQueue.js";
+export { ProgressBar } from "./src/cli/CLI.js";
 
-export { Serialization } from "./src/state/Serialize.ts";
-export { Deserialization, Deserialize, DeserializationLibrary } from "./src/state/Deserialize.ts";
+export { Serialization } from "./src/state/Serialize.js";
+export { Deserialization, Deserialize, DeserializationLibrary } from "./src/state/Deserialize.js";
 
-export * as DataUtils from "./src/data/Utils.ts";
-export * as ArrayUtils from "./src/utils/ArrayUtils.ts";
-export * as TimeUtils from "./src/utils/Time.ts";
-export { Maths } from "./src/utils/Maths.ts";
+export * as DataUtils from "./src/data/Utils.js";
+export * as ArrayUtils from "./src/utils/ArrayUtils.js";
+export * as TimeUtils from "./src/utils/Time.js";
+export { Maths } from "./src/utils/Maths.js";
 
-export * as Logging from "./src/utils/Logging.ts";
+export * as Logging from "./src/utils/Logging.js";
 
-export { Array2D } from "./src/data/Array2D.ts";
+export { Array2D } from "./src/data/Array2D.js";
 
-export { MinQueueHeap }  from "./src/data/Heap.ts";
+export { MinQueueHeap }  from "./src/data/Heap.js";
 
-export { CreateAsyncMessagePort, HandleAsync} from "./src/worker/AsyncMessageWrapper.ts";
+export { CreateAsyncMessagePort, HandleAsync} from "./src/worker/AsyncMessageWrapper.js";

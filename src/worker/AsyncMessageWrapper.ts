@@ -1,5 +1,6 @@
 import {ChildProcess} from "node:child_process";
 import Process from "node:process";
+import type { Transferable, MessagePort } from "node:worker_threads";
 
 export type AsyncWorkerPort = {
 	async: (msg: any, transferable?: any[])=>Promise<any>;
@@ -27,7 +28,7 @@ export function CreateAsyncMessagePort(port: MessagePort|ChildProcess): AsyncWor
 	if(port instanceof ChildProcess){
 		port.addListener("message", listen);
 	}else{
-		port.addEventListener("message", listen);
+		port.addEventListener("message", <any>listen);
 	}
 
 	console.log(port instanceof ChildProcess?"CHILD_PROCESS":"WEB_WORKER");

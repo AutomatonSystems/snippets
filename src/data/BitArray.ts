@@ -1,5 +1,5 @@
 import { readFile, open } from "node:fs/promises";
-import { createFile, hasFile } from "../DiskIO.ts";
+import { createFile, hasFile } from "../DiskIO.js";
 
 export class BitArray{
 

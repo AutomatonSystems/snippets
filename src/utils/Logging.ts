@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 // import chalk from "chalk";
-import { Nullable } from '../Types';
-import { TermText, TextTransforms } from '../cli/Colour';
-import { sleep } from './Time';
+import { Nullable } from '../Types.js';
+import { TermText, TextTransforms } from '../cli/Colour.js';
+import { sleep } from './Time.js';
 // import { BasicSourceMapConsumer, IndexedSourceMapConsumer, SourceMapConsumer } from 'source-map';
 type BasicSourceMapConsumer = {};
 type IndexedSourceMapConsumer = {};

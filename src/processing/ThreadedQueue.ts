@@ -1,10 +1,10 @@
 import cluster from 'node:cluster';
 import process from 'node:process';
-import { sleep } from '../utils/Time.ts';
-import { ProgressBar } from '../cli/CLI.ts';
+import { sleep } from "../utils/Time.js";
+import { ProgressBar } from "../cli/CLI.js";
 import PQueue from 'p-queue';
-import { BitArray } from '../data/BitArray.ts';
-import { hasFile } from '../DiskIO.ts';
+import { BitArray } from "../data/BitArray.js";
+import { hasFile } from "../DiskIO.js";
 
 type ThreadedQueueOptions = {
 	threads: number // number of threads to create

@@ -1,7 +1,7 @@
-import { TextTransforms, TermColor } from "./Colour.ts";
-import { ensureCalled } from "../Garbage.ts";
-import { IStoppable } from "../Types.ts";
-import { ms } from "../utils/Time.ts";
+import { TextTransforms, TermColor } from "./Colour.js";
+import { ensureCalled } from "../Garbage.js";
+import { IStoppable } from "../Types.js";
+import { ms } from "../utils/Time.js";
 
 export function keyInput(callback: (char: string, stop: ()=>void)=>void): IStoppable{
 	console.log("KEY INPUT STARTED");

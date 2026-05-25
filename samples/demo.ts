@@ -1,8 +1,8 @@
-import { ProgressBar } from "../src/cli/CLI.ts";
-import { TermColor, TermText } from "../src/cli/Colour.ts";
-import { BitArray } from "../src/data/BitArray.ts";
-import { ConcurrentQueue } from "../src/processing/ConcurrentQueue.ts";
-import { sleep } from "../src/utils/Time.ts";
+import { ProgressBar } from "../src/cli/CLI.js";
+import { TermColor, TermText } from "../src/cli/Colour.js";
+import { BitArray } from "../src/data/BitArray.js";
+import { ConcurrentQueue } from "../src/processing/ConcurrentQueue.js";
+import { sleep } from "../src/utils/Time.js";
 import fs from "node:fs";
 
 

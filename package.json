@@ -2,20 +2,26 @@
 	"name": "@automaton.systems/snippets",
 	"version": "0.2.3",
 	"description": "A set of unrelated frequently useful typescript esm code snippets",
-	"main": "index.ts",
+	"main": "./index.js",
+	"exports":{
+		".": "./index.js",
+		"./*": "./*"
+	},
 	"type": "module",
 	"scripts": {
-		"demo": "tsx --expose-gc samples/demo.ts",
-		"fork": "tsx samples/ThreadQueue.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"demo": "tsx --expose-gc samples/demo.js",
+		"fork": "tsx samples/ThreadQueue.js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc"
 	},
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@types/node": "^22.13.1",
+		"@types/node": "^22.19.17",
 		"tsx": "^4.19.2"
 	},
 	"dependencies": {
-		"p-queue": "^8.0.1"
+		"p-queue": "^8.0.1",
+		"typescript": "^6.0.3"
 	}
 }

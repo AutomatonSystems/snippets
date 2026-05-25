@@ -1,5 +1,5 @@
 import { randomUUID as UUID } from "node:crypto";
-import { IFunc } from "./Types.ts";
+import { IFunc } from "./Types.js";
 
 const CALLBACKS = new Map<string, ()=>void>();
 const registry = new FinalizationRegistry((heldValue: string) => {

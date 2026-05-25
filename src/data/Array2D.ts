@@ -1,4 +1,4 @@
-import { Nullable } from "../Types";
+import { Nullable } from "../Types.js";
 
 export class Array2D<T>{
 	// cannot be changed after construction

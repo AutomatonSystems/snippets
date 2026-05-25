@@ -153,8 +153,8 @@ export class Deserialization{
 			return buffer;
 		};
 
-		let root = JSON.parse(Decoder.decode(readTail(header.root, true)));
-		let weak = JSON.parse(Decoder.decode(readTail(header.weak, true)));
+		let root = JSON.parse(Decoder.decode(<any>readTail(header.root, true)));
+		let weak = JSON.parse(Decoder.decode(<any>readTail(header.weak, true)));
 
 		this.binaryFunc = ((bid: string)=>{
 			return readTail(header[bid], false);

@@ -1,0 +1,37 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"types": ["node"],
+		"rootDir": "./src",
+		"strictPropertyInitialization": false,
+		"declaration": true,
+		"outDir": "./dist/",
+		"module": "node20",
+		"moduleResolution": "node16",
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"checkJs": true,
+		"noImplicitAny": false,
+		"noImplicitOverride": true,
+		"target": "es2024",
+		"newLine": "lf",
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"paths": {
+			"src/*": ["./src/*"]
+		},
+		"lib": ["ES2024"],
+		"strictNullChecks": true,
+		"noEmitOnError": true,
+
+		"jsx": "react",
+		"jsxFactory": "LemonJelly"
+
+	},
+	"include": [
+		"./src/**/*"
+	],
+	"typeAcquisition": {
+        "enable": true
+    }
+}
